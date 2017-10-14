@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity
                 return Double.valueOf(a) + Double.valueOf(b);
             case "-":
                 return Double.valueOf(a) - Double.valueOf(b);
-            case "x":
+            case "X":
                 return Double.valueOf(a) * Double.valueOf(b);
             case "÷":
                 try
