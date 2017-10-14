@@ -21,7 +21,7 @@
         android:gravity="bottom|right"
         android:text="0"
         android:textAllCaps="false"
-        android:textSize="90sp"
+        android:textSize="75sp"
         />
 
     <LinearLayout
@@ -37,6 +37,7 @@
             android:layout_weight="1"
             android:background="@color/button"
             android:fontFamily="sans-serif"
+            android:onClick="onClickNumber"
             android:text="7"
             android:textColor="@android:color/background_light"
             android:textSize="30sp"/>
@@ -48,6 +49,7 @@
             android:layout_weight="1"
             android:background="@color/button"
             android:fontFamily="sans-serif"
+            android:onClick="onClickNumber"
             android:text="8"
             android:textColor="@android:color/background_light"
             android:textSize="30sp"/>
@@ -59,6 +61,7 @@
             android:layout_weight="1"
             android:background="@color/button"
             android:fontFamily="sans-serif"
+            android:onClick="onClickNumber"
             android:text="9"
             android:textColor="@android:color/background_light"
             android:textSize="30sp"/>
@@ -70,6 +73,7 @@
             android:layout_weight="1"
             android:background="@color/buttonSpec"
             android:fontFamily="sans-serif"
+            android:onClick="onClickOperator"
             android:text="/"
             android:textColor="@android:color/background_light"
             android:textSize="30sp"/>
@@ -89,6 +93,7 @@
             android:layout_weight="1"
             android:background="@color/button"
             android:fontFamily="sans-serif"
+            android:onClick="onClickNumber"
             android:text="4"
             android:textColor="@android:color/background_light"
             android:textSize="30sp"/>
@@ -100,6 +105,7 @@
             android:layout_weight="1"
             android:background="@color/button"
             android:fontFamily="sans-serif"
+            android:onClick="onClickNumber"
             android:text="5"
             android:textColor="@android:color/background_light"
             android:textSize="30sp"/>
@@ -111,6 +117,7 @@
             android:layout_weight="1"
             android:background="@color/button"
             android:fontFamily="sans-serif"
+            android:onClick="onClickNumber"
             android:text="6"
             android:textColor="@android:color/background_light"
             android:textSize="30sp"/>
@@ -122,6 +129,7 @@
             android:layout_weight="1"
             android:background="@color/buttonSpec"
             android:fontFamily="sans-serif"
+            android:onClick="onClickOperator"
             android:text="X"
             android:textColor="@android:color/background_light"
             android:textSize="30sp"/>
@@ -141,6 +149,7 @@
             android:layout_weight="1"
             android:background="@color/button"
             android:fontFamily="sans-serif"
+            android:onClick="onClickNumber"
             android:text="1"
             android:textColor="@android:color/background_light"
             android:textSize="30sp"/>
@@ -152,6 +161,7 @@
             android:layout_weight="1"
             android:background="@color/button"
             android:fontFamily="sans-serif"
+            android:onClick="onClickNumber"
             android:text="2"
             android:textColor="@android:color/background_light"
             android:textSize="30sp"/>
@@ -163,6 +173,7 @@
             android:layout_weight="1"
             android:background="@color/button"
             android:fontFamily="sans-serif"
+            android:onClick="onClickNumber"
             android:text="3"
             android:textColor="@android:color/background_light"
             android:textSize="30sp"/>
@@ -174,6 +185,7 @@
             android:layout_weight="1"
             android:background="@color/buttonSpec"
             android:fontFamily="sans-serif"
+            android:onClick="onClickOperator"
             android:text="-"
             android:textColor="@android:color/background_light"
             android:textSize="30sp"/>
@@ -192,6 +204,7 @@
             android:layout_weight="1"
             android:background="@color/button"
             android:fontFamily="sans-serif"
+            android:onClick="onClickClear"
             android:text="CE"
             android:textColor="@android:color/background_light"
             android:textSize="30sp"/>
@@ -203,6 +216,7 @@
             android:layout_weight="1"
             android:background="@color/button"
             android:fontFamily="sans-serif"
+            android:onClick="onClickNumber"
             android:text="0"
             android:textColor="@android:color/background_light"
             android:textSize="30sp"/>
@@ -214,6 +228,7 @@
             android:layout_weight="1"
             android:background="@color/button"
             android:fontFamily="sans-serif"
+            android:onClick="onClickEqual"
             android:text="="
             android:textColor="@android:color/background_light"
             android:textSize="30sp"/>
@@ -225,6 +240,7 @@
             android:layout_weight="1"
             android:background="@color/buttonSpec"
             android:fontFamily="sans-serif"
+            android:onClick="onClickOperator"
             android:text="+"
             android:textColor="@android:color/background_light"
             android:textSize="30sp"/>
