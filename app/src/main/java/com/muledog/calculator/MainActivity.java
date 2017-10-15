@@ -1,18 +1,14 @@
 package com.muledog.calculator;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
-
-import static android.text.method.TextKeyListener.clear;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -26,7 +22,7 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        _screen = (TextView)findViewById(R.id.textView);
+        _screen = (TextView) findViewById(R.id.textView);
         _screen.setText(display);
     }
 
@@ -35,8 +31,10 @@ public class MainActivity extends AppCompatActivity
         _screen.setText(display);
     }
 
-    public void onClickNumber(View v){
-        if(result != ""){
+    public void onClickNumber(View v)
+    {
+        if (result != "")
+        {
             clear();
             updateScreen();
         }
@@ -54,12 +52,15 @@ public class MainActivity extends AppCompatActivity
 
     private boolean isOperator(char op)
     {
-        switch (op){
+        switch (op)
+        {
             case '+':
             case '-':
             case 'x':
-            case '÷':return true;
-            default: return false;
+            case '÷':
+                return true;
+            default:
+                return false;
         }
     }
 
@@ -69,24 +70,74 @@ public class MainActivity extends AppCompatActivity
         updateScreen();
     }
 
-    public void onClickOperator(View v){
-        if(display == "") return;
+    public void onClickMinus(View v)
+    {
+        if (display.length() > 0)
+        {
 
-        Button b = (Button)v;
+            if (currentOperator != "")
+            {
+                String[] operation = display.split(Pattern.quote(currentOperator));
+                if (operation.length == 1)
+                {
+                    display = (operation[0] + currentOperator + "-");
+                    updateScreen();
+                    return;
+                } else if (Objects.equals(operation[1].substring(0, 1), "-"))
+                {
+                    display = (operation[0] + currentOperator + operation[1].substring(1));
+                    updateScreen();
+                } else
+                {
+                    display = (operation[0] + currentOperator + "-" + operation[1]);
+                    updateScreen();
+                }
+            } else if (Objects.equals(display.substring(0, 1), "-"))
+            {
+                display = display.substring(1);
+                updateScreen();
+            } else
+            {
+                display = "-" + display;
+                updateScreen();
+            }
+        } else
+        {
+            display = "-";
+            updateScreen();
+        }
+    }
 
-        if(result != ""){
+    public void onClickPercent(View v)
+    {
+        String[] operation = (display.split("%"));
+        result = String.valueOf(Double.valueOf(operation[0]) / 100.0);
+        _screen.setText(display + "\n" + String.valueOf(result));
+    }
+
+    public void onClickOperator(View v)
+    {
+        if (display == "") return;
+
+        Button b = (Button) v;
+
+        if (result != "")
+        {
             String _display = result;
             clear();
             display = _display;
         }
 
-        if(currentOperator != ""){
-            Log.d("CalcX", ""+display.charAt(display.length()-1));
-            if(isOperator(display.charAt(display.length()-1))){
-                display = display.replace(display.charAt(display.length()-1), b.getText().charAt(0));
+        if (currentOperator != "")
+        {
+            Log.d("CalcX", "" + display.charAt(display.length() - 1));
+            if (isOperator(display.charAt(display.length() - 1)))
+            {
+                display = display.replace(display.charAt(display.length() - 1), b.getText().charAt(0));
                 updateScreen();
                 return;
-            }else{
+            } else
+            {
                 getResult();
                 display = result;
                 result = "";
@@ -121,17 +172,25 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private boolean getResult(){
-        if(currentOperator == "") return false;
-        String[] operation = display.split(Pattern.quote(currentOperator));
-        if(operation.length < 2) return false;
-        result = String.valueOf(operate(operation[0], operation[1], currentOperator));
+    private boolean getResult()
+    {
+        if (currentOperator == "") return false;
+        String[] operation = display.split(Pattern.quote(currentOperator), 2);
+        if (operation.length == 1) return false;
+        try
+        {
+            result = String.valueOf(operate(operation[0], operation[1], currentOperator));
+        } catch (Exception e)
+        {
+            return false;
+        }
         return true;
     }
 
-    public void onClickEqual(View v){
-        if(display == "") return;
-        if(!getResult()) return;
+    public void onClickEqual(View v)
+    {
+        if (display == "") return;
+        if (!getResult()) return;
         _screen.setText(display + "\n" + String.valueOf(result));
     }
 }
