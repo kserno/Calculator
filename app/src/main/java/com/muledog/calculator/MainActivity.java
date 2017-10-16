@@ -33,14 +33,17 @@ public class MainActivity extends AppCompatActivity
 
     public void onClickNumber(View v)
     {
-        if (result != "")
+        if (display.length() < 9)
         {
-            clear();
+            if (result != "")
+            {
+                clear();
+                updateScreen();
+            }
+            Button b = (Button) v;
+            display += b.getText();
             updateScreen();
         }
-        Button b = (Button) v;
-        display += b.getText();
-        updateScreen();
     }
 
     private void clear()
@@ -191,6 +194,13 @@ public class MainActivity extends AppCompatActivity
     {
         if (display == "") return;
         if (!getResult()) return;
-        _screen.setText(display + "\n" + String.valueOf(result));
+        if (result.length() <= 9)
+        {
+            _screen.setText(display + "\n" + String.valueOf(result));
+        } else
+        {
+            result = result.substring(0, 8);
+            _screen.setText(display + "\n" + String.valueOf(result));
+        }
     }
 }
